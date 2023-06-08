@@ -37,7 +37,7 @@ public class ContaCorrente {
     }
 
     //método para consulta extrato entre datas
-      public void consultarExtrato(Date d1, Date d2){
+    public void consultarExtrato(Date d1, Date d2){
         System.out.println("Extrato na data");
     }
 
