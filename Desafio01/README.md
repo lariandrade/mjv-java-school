@@ -18,7 +18,7 @@ Criar uma classe Conta Corrente que contenha o seguinte:
 - Consultar o extrato entre duas datas
 - Consultar o saldo atual
 
-   
+
 ## Objetivo do Desafio
 - Entendimento de Variáveis e métodos
 - Indentação
@@ -26,4 +26,11 @@ Criar uma classe Conta Corrente que contenha o seguinte:
 - Logica de programação não foi solicitada.
 - Permitido criar novos atributos se necessário.
   
+**Comandos do Git utilizado:**
+- git init
+- git remote
+- git add .
+- git commit -M " "
+- git branch -M main
+- git push -u origin main
   
