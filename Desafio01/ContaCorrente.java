@@ -14,11 +14,6 @@ public class ContaCorrente {
 
     //Operações da conta
     double saldoConta;
-    double saqueValor;
-    double transferenciaValor;
-    String motivoCancelar;
-    Date dataInicio;
-    Date dataFinal;
 
 	//método para sacar
     public void sacar(Double valor, Double saldoConta) {
