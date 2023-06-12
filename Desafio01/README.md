@@ -30,7 +30,7 @@ Criar uma classe Conta Corrente que contenha o seguinte:
 - git init
 - git remote
 - git add .
-- git commit -M " "
+- git commit -m " "
 - git branch -M main
 - git push -u origin main
   
