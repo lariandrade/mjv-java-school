@@ -12,11 +12,11 @@ Criar uma classe Conta Corrente que contenha o seguinte:
    
 **Metodos:**
   
-Sacar um valor
-Transferir um valor para outra conta
-Cancelar conta com uma justificativa
-Consultar o extrato entre duas datas
-Consultar o saldo atual
+- Sacar um valor
+- Transferir um valor para outra conta
+- Cancelar conta com uma justificativa
+- Consultar o extrato entre duas datas
+- Consultar o saldo atual
 
    
 ## Objetivo do Desafio
@@ -24,5 +24,6 @@ Consultar o saldo atual
 - Indentação
 - Uso do Git e Github
 - Logica de programação não foi solicitada.
+- Permitido criar novos atributos se necessário.
   
   
