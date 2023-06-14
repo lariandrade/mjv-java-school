@@ -4,41 +4,47 @@ import java.sql.Date;
 
 public class ContaCorrente {
 
-    //dados da conta
-    int numeroConta;
-    int numeroAgencia;
+    Cliente cliente;
+    Integer numeroConta;
+    Integer numeroAgencia;
+    Double saldo;
+    boolean contaAtiva = true;
 
-   //dados do cliente
-    String nomeCliente;
-    Date dataNascimento;
-
-    //Operações da conta
-    double saldoConta;
-
-	//método para sacar
-    public void sacar(Double valor, Double saldoConta) {
-	    saldoConta = saldoConta - valor;
-        System.out.println("Saldo atual: " + saldoConta);
-	}
-
-    //método para transferir para outra conta
-    public void transferir(int numeroConta, int numeroAgencia, double valor){
-        System.out.println("Valor transferido");
-    }
-    
-    //método para cancelar conta
-    public void cancelar(int numeroConta, int numeroAgencia, String motivo){
-        System.out.println("Conta cancelada");
+    public ContaCorrente() {
+        cliente = new Cliente();
     }
 
-    //método para consulta extrato entre datas
-    public void consultarExtrato(Date d1, Date d2){
-        System.out.println("Extrato na data");
+    public boolean sacar(Double valor) {
+        if (this.saldo < valor) {
+            return false;
+        }
+
+        this.saldo = this.saldo - valor;
+        return true;
     }
 
-    //método para consultar saldo
-    public void consultarSaldo(){
-        System.out.println("Saldo Atual: " + saldoConta);
+    // método para transferir para outra conta
+    public void transferir(int numeroConta, int numeroAgencia, double valor) {
     }
-   
+
+    // método para consulta extrato entre datas
+    public void consultarExtrato(Date d1, Date d2) {
+    }
+
+    // método para consultar saldo
+    public Double consultarSaldo() {
+        return this.saldo;
+    }
+
+        // método para cancelar conta
+    public String cancelar(String justificativa) {
+        if (this.saldo != 0.00) {
+            return cliente.nomeCliente + ", retire todo valor da conta para cancelar. "
+            + "Saldo disponivel: " + this.saldo;
+        }
+
+        this.contaAtiva = false;
+        return "Conta desativada.";
+    }
+
 }
