@@ -1,28 +1,61 @@
 package ExercicioConta;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Terminal {
-    
+
     public static void main(String[] args) {
 
-        ContaCorrente conta = new ContaCorrente();
+        // Cadastro dos clientes
+        Cliente cliente1 = new Cliente();
+        cliente1.setNome("Larissa");
+        cliente1.setDataNascimento(LocalDate.of(1999, 6, 1));
 
-        conta.cliente = new Cliente();
-        conta.cliente.setNomeCliente("Larissa");
-        conta.cliente.setDataNascimento(LocalDate.of(1999, 6, 1));
+        Cliente cliente2 = new Cliente();
+        cliente2.setNome("Gleyson");
+        cliente2.setDataNascimento(LocalDate.of(1994, 3, 11));
 
+        // Abrindo as contas
 
-        boolean sacar = conta.sacar(195.00);
+        ContaCorrente conta1 = new ContaCorrente();
+        conta1.setCliente(cliente1);
+        conta1.setNumeroAgencia(111);
+        conta1.setNumeroConta(2345);
+        conta1.setContaAtiva(true);
 
-        //se verdadeiro, saque realizado.
-        if(sacar)
-            System.out.println("Saldo apos saque: R$" + conta.getSaldo());
-        else
-            System.out.println("Saldo insuficiente");
+        ContaCorrente conta2 = new ContaCorrente();
+        conta2.setCliente(cliente2);
+        conta2.setNumeroAgencia(111);
+        conta2.setNumeroConta(1462);
+        conta2.setContaAtiva(true);
 
-        //cancelar
-        String cancelar = conta.cancelar("Motivos pessoais");
+        // Metodos
+        conta1.depositar(500.00);
+        conta2.depositar(700.00);
+
+        conta1.sacar(100.00);
+        System.out.println(conta1.consultarSaldo());
+
+        conta1.transferir(conta2, 10.00,
+                TipoTransferencia.PIX,
+                "Transferencia 1",
+                LocalDate.of(2023, 6, 12));
+
+        conta1.transferir(conta2, 10.00, 
+                TipoTransferencia.PIX, 
+                
+                "Transferencia 2", LocalDate.now());
+
+        System.out.println(conta2.consultarSaldo());
+
+        List<Transacao> extratoFiltrado = conta1.consultarExtrato(LocalDate.of(2023, 6, 12), LocalDate.now());
+
+        for (Transacao transacao : extratoFiltrado) {
+            System.out.println(transacao.getDescricao());
+        }
+
+        String cancelar = conta1.cancelar("Motivos pessoais");
         System.out.println(cancelar);
 
     }

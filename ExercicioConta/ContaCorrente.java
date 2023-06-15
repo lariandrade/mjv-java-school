@@ -1,17 +1,26 @@
 package ExercicioConta;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContaCorrente {
 
-    Cliente cliente;
+    private Cliente cliente = new Cliente();
     private Integer numeroConta;
     private Integer numeroAgencia;
-    private Double saldo = 199.00;
+    private Double saldo = 0.00;
     private boolean contaAtiva = true;
 
-    public ContaCorrente() {
-        cliente = new Cliente();
+    List<Transacao> transacoes = new ArrayList<>();
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Integer getNumeroConta() {
@@ -42,32 +51,62 @@ public class ContaCorrente {
         return saldo;
     }
 
-    public boolean sacar(Double valor) {
+    public void depositar(Double valor){
+        if (valor < 0.00){
+            System.out.println("Valor invalido.");
+        }
+
+        this.saldo = this.saldo + valor;
+    }
+
+    public void sacar(Double valor) {
         if (this.saldo < valor) {
-            return false;
+            System.out.println("Saque negado!!");
         }
 
         this.saldo = this.saldo - valor;
-        return true;
+       
     }
 
-    // método para transferir para outra conta
-    public void transferir(int numeroConta, int numeroAgencia, double valor) {
+    public void transferir(ContaCorrente contaDestino, Double valor, TipoTransferencia tipo, String descricao, LocalDate data) {
+
+        Transacao transacao = new Transacao();
+
+        transacao.setNumeroAgencia(contaDestino.getNumeroAgencia());
+        transacao.setNumeroConta(contaDestino.getNumeroConta());
+        transacao.setValor(valor);
+        transacao.setTipo(tipo);
+        transacao.setDescricao(descricao);
+        transacao.setData(data);
+        transacoes.add(transacao);
+
+        contaDestino.depositar(valor);
+
+        this.saldo = this.saldo - valor;
+
     }
 
-    // método para consulta extrato entre datas
-    public void consultarExtrato(Date d1, Date d2) {
+    public List<Transacao> consultarExtrato(LocalDate dataInicio, LocalDate dataFinal) {
+
+       List<Transacao> transacoesFiltradas = new ArrayList<>();
+
+        for (Transacao transacao : transacoes) {
+             if (!transacao.getData().isBefore(dataInicio) && !transacao.getData().isAfter(dataFinal)) {
+                 transacoesFiltradas.add(transacao);
+            }
+        }
+
+        return transacoesFiltradas;
+
     }
 
-    // método para consultar saldo
     public Double consultarSaldo() {
         return this.saldo;
     }
 
-    // método para cancelar conta
     public String cancelar(String justificativa) {
         if (this.saldo != 0.00) {
-            return cliente.getNomeCliente() + ", retire todo valor da conta para cancelar. "
+            return cliente.getNome() + ", retire todo valor da conta para cancelar. "
                     + "Saldo disponivel: " + this.saldo;
         }
 
