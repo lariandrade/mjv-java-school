@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class Cliente {
 
-    private String nomeCliente;
+    private String nome;
     private LocalDate dataNascimento;
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public String getNome() {
+        return nome;
     }
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
     public LocalDate getDataNascimento() {
         return dataNascimento;
