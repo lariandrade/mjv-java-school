@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ContaCorrente {
 
-    private Cliente cliente = new Cliente();
+    private Cliente cliente;
     private Integer numeroConta;
     private Integer numeroAgencia;
     private Double saldo = 0.00;
