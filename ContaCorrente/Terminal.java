@@ -3,8 +3,6 @@ package ContaCorrente;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.swing.tree.TreeNode;
-
 public class Terminal {
 
     public static void main(String[] args) {
