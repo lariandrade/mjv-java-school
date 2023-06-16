@@ -1,7 +1,6 @@
 ## Proposta do Desafio
 ![image](https://github.com/lariandrade/mjv-java-school/assets/44838761/3098a766-e02d-4433-9fe7-cb1563efa1d6)
 
-&nbsp;
 
 ## Objetivo do Desafio
 - Entendimento de variáveis e métodos
