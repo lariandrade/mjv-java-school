@@ -3,6 +3,8 @@ package ContaCorrente;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.swing.tree.TreeNode;
+
 public class Terminal {
 
     public static void main(String[] args) {
@@ -42,17 +44,27 @@ public class Terminal {
                 "Transferencia 1",
                 LocalDate.of(2023, 6, 12));
 
-        conta1.transferir(conta2, 10.00, 
-                TipoTransferencia.PIX, 
-                
+        conta1.transferir(conta2, 10.00,
+                TipoTransferencia.DOC,
+
                 "Transferencia 2", LocalDate.now());
 
         System.out.println(conta2.consultarSaldo());
 
         List<Transacao> extratoFiltrado = conta1.consultarExtrato(LocalDate.of(2023, 6, 12), LocalDate.now());
 
-        for (Transacao transacao : extratoFiltrado) {
-            System.out.println(transacao.getDescricao());
+        if (!extratoFiltrado.isEmpty()) {
+            int contador = 1;
+
+            for (Transacao transacao : extratoFiltrado) {
+                System.out.println("Dados do extrato " + contador + ": ");
+                System.out.println("Data: " + transacao.getData());
+                System.out.println("Tipo: " + transacao.getTipo().getDescricao());
+                System.out.println("Valor: " + transacao.getValor());
+                System.out.println("Descricao: " + transacao.getDescricao());
+                        
+                contador++;
+            }
         }
 
         String cancelar = conta1.cancelar("Motivos pessoais");

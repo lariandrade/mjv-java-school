@@ -1,9 +1,9 @@
 package ContaCorrente;
 
 public enum TipoTransferencia {
-    TED("Transferência Eletrônica Disponível"),
-    DOC("Documento de Ordem de Crédito"),
-    PIX("Pagamento Instantâneo");
+    TED("Transferencia Eletronica Disponivel"),
+    DOC("Documento de Ordem de Credito"),
+    PIX("Pagamento Instantaneo");
 
     private String descricao;
 
