@@ -1,4 +1,4 @@
-package ExercicioConta;
+package Atividade01;
 
 public enum TipoTransferencia {
     TED,
