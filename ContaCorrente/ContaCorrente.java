@@ -1,4 +1,4 @@
-package Atividade01;
+package ContaCorrente;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

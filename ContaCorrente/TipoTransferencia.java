@@ -1,4 +1,4 @@
-package Atividade01;
+package ContaCorrente;
 
 public enum TipoTransferencia {
     TED,
